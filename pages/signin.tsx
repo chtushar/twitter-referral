@@ -1,10 +1,13 @@
-import type { NextPage } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
+import { API } from '../requests';
 
 import styles from '../styles/Home.module.css';
 
-const Home: NextPage = () => {
+const SignIn = () => {
+  const handleSignIn = async () => {
+    await API.auth.signInWithTwitter();
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -14,12 +17,10 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <Link href='/signin'>
-          <a>Sign in</a>
-        </Link>
+        <button onClick={handleSignIn}>sign in with twitter</button>
       </main>
     </div>
   );
 };
 
-export default Home;
+export default SignIn;
